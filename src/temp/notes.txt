@@ -1,0 +1,2 @@
+Pensieve
+is more so for developers. to view go to https://brittanychiang.com/pensieve/
