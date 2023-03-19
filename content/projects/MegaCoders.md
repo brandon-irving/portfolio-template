@@ -3,7 +3,9 @@ date: '2017-12-21'
 title: 'Mega Coders Stuff!'
 github: 'https://github.com/bchiang7/halcyon-site'
 external: 'https://halcyon-theme.netlify.com/'
-company: 'undefined'
+ios: ''
+android: ''
+company: 'Mega Coders LLC'
 showInProjects: true
 tech:
   - VS Code

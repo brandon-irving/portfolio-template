@@ -1,39 +1,22 @@
 import { css } from 'styled-components';
-// const themeConfig = {
-//   main: '#64ffda', // the main font color, image overlay and accent
-//   pageBg: '#0a192f', // the bg color
-//   boxBg: '#112240', // box colors
-//   divider: '#233554', // divider lines
-//   scrollBar: '#495670', // scrollbar
-//   subtext: ['#8892b0', ' #a8b2d1', '#ccd6f6'], // subtext 1, 2, 3
-// };
-/* 
-TODO: theme where colors are  
-    --green: #64ffda; // the main font color, image overlay and accent
-        --navy: #0a192f; // the bg color
-            --light-navy: #112240; // box colors
-                --lightest-navy: #233554; // divider lines
-                    --dark-slate: #495670; // scrollbar
-                        --slate: #8892b0; // subtext 1
-                            --light-slate: #a8b2d1; // subtext 2
-    --lightest-slate: #ccd6f6; // subtext 3
-*/
+import theme from '../buildConfig/core/theme';
+
 const variables = css`
   :root {
-    --dark-navy: #020c1b;
-    --navy: #0a192f;
-    --light-navy: #112240;
-    --lightest-navy: #233554;
-    --navy-shadow: rgba(2, 12, 27, 0.7);
-    --dark-slate: #495670;
-    --slate: #8892b0;
-    --light-slate: #a8b2d1;
-    --lightest-slate: #ccd6f6;
+    --navy: ${theme.pageBg};
+    --light-navy: ${theme.boxBg};
+    --lightest-navy: ${theme.divider};
+    --navy-shadow: ${theme.boxShadow};
+    --dark-slate: ${theme.scrollBar};
+    --slate: ${theme.subtext[0]};
+    --light-slate: ${theme.subtext[1]};
+    --lightest-slate: ${theme.subtext[2]};
+    --green: ${theme.main};
+    --green-tint: ${theme.mainHover};
     --white: #e6f1ff;
-    --green: #64ffda;
-    --green-tint: rgba(100, 255, 218, 0.1);
     --pink: #f57dff;
     --blue: #57cbff;
+    --dark-navy: #020c1b;
 
     --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
       sans-serif;

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
-import { srConfig } from '@config';
+import { srConfig, projects as projectsConfig } from '@config';
 import sr from '@utils/sr';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
@@ -196,6 +196,8 @@ const Projects = () => {
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
 
+  const { title, viewArchive } = projectsConfig;
+
   useEffect(() => {
     if (prefersReducedMotion) {
       return;
@@ -265,11 +267,13 @@ const Projects = () => {
 
   return (
     <StyledProjectsSection>
-      <h2 ref={revealTitle}>Other Noteworthy Projects</h2>
+      <h2 ref={revealTitle}>{title.text}</h2>
 
-      <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
-        view the archive
-      </Link>
+      {!!viewArchive && (
+        <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
+          {viewArchive.text}
+        </Link>
+      )}
 
       <ul className="projects-grid">
         {prefersReducedMotion ? (

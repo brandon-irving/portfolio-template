@@ -2,6 +2,7 @@ const hero = require('./buildConfig/sections/hero');
 const about = require('./buildConfig/sections/about');
 const jobs = require('./buildConfig/sections/jobs');
 const featured = require('./buildConfig/sections/featured');
+const projects = require('./buildConfig/sections/projects');
 
 const email = require('./buildConfig/core/email');
 const socialMedia = require('./buildConfig/core/socialMedia');
@@ -17,6 +18,7 @@ module.exports = {
   about,
   jobs,
   featured,
+  projects,
   colors: {
     green: '#64ffda',
     navy: '#0a192f',
