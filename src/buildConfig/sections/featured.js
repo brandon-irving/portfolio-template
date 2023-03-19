@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   title: { text: 'Some Things I’ve Built', tagProps: { className: 'numbered-heading' } },
   dictionary: {
     MegaCoders: {

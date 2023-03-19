@@ -1,4 +1,4 @@
-const { createFolderAndFile } = require('./helpers').modules;
+const { createFile } = require('./helpers').modules;
 
 // CONFIG: JOBS
 const MegaCoders = {
@@ -11,16 +11,37 @@ const MegaCoders = {
   description: `A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=brittanychiang.halcyon-vscode), [Package Control](https://packagecontrol.io/packages/Halcyon%20Theme), [Atom Package Manager](https://atom.io/themes/halcyon-syntax), and [npm](https://www.npmjs.com/package/hyper-halcyon-theme).`,
 };
 
-const projectsConfigToMdString = ({ date, title, github, external, tech, description }) => `---
+const projectsConfigToMdString = ({
+  date,
+  title,
+  github,
+  external,
+  tech,
+  description,
+  company,
+}) => `---
 date: '${date}'
 title: '${title}'
 github: '${github}'
 external: '${external}'
+company: '${company}'
+showInProjects: true
 tech: \n${tech.map(t => `- ${t}`).join('\n')}
 ---
 
 ${description}
 `;
+// `---
+// date: '2020-09-15'
+// title: 'Michelle Wu for Boston Grassroots Toolkit'
+// github: ''
+// external: 'https://toolkit.michelleforboston.com/'
+// tech:
+//   - Gatsby
+//   - Styled Components
+// company: 'Upstatement'
+// showInProjects: false
+// ---`
 
 const projects = {
   MegaCoders,
@@ -28,10 +49,9 @@ const projects = {
 
 // const PROJECTS = projects.dictionary;
 exports.projectsGenerator = () =>
-  Object.keys(projects).forEach(folderName => {
-    const job = projects[folderName];
+  Object.keys(projects).forEach(fileName => {
+    const project = projects[fileName];
     const root = `content/projects`;
-    const directory = `${root}/${folderName}`;
-    const filePath = `${root}/${folderName}/index.md`;
-    createFolderAndFile(directory, filePath, projectsConfigToMdString(job));
+    const filePath = `${root}/${fileName}.md`;
+    createFile(filePath, projectsConfigToMdString(project));
   });

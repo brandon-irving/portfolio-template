@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   intro: {
     text: 'Hi, my name is',
     tagProps: {},

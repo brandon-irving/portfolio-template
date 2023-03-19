@@ -1,6 +1,6 @@
 // const availableSocialMedia = ['Instagram', 'Linkedin', 'Twitter', 'Facebook'];
 
-export default [
+module.exports = [
   {
     name: 'GitHub',
     url: 'https://github.com/bchiang7',

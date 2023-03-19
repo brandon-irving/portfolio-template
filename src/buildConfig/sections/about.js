@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   title: {
     text: 'About me',
     tagProps: {

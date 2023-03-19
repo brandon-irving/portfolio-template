@@ -1,10 +1,11 @@
-const { default: hero } = require('./buildConfig/sections/hero');
-const { default: about } = require('./buildConfig/sections/about');
-const { default: jobs } = require('./buildConfig/sections/jobs');
-const { default: featured } = require('./buildConfig/sections/featured');
-const { default: email } = require('./buildConfig/core/email');
-const { default: socialMedia } = require('./buildConfig/core/socialMedia');
-const { default: navLinks } = require('./buildConfig/core/navLinks');
+const hero = require('./buildConfig/sections/hero');
+const about = require('./buildConfig/sections/about');
+const jobs = require('./buildConfig/sections/jobs');
+const featured = require('./buildConfig/sections/featured');
+
+const email = require('./buildConfig/core/email');
+const socialMedia = require('./buildConfig/core/socialMedia');
+const navLinks = require('./buildConfig/core/navLinks');
 
 const CONTENT_LOAD_DELAY = 50; // in ms
 
