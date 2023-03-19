@@ -41,6 +41,31 @@ const StyledContactSection = styled.section`
   }
 `;
 
+// CONFIG:
+const contactConfig = {
+  title: {
+    text: 'What’s Next?',
+    tagProps: {
+      className: 'numbered-heading overline',
+    },
+  },
+  subTitle: {
+    text: 'Get In Touch',
+    tagProps: { className: 'title' },
+  },
+  description: {
+    text: ` Although I’m not currently looking for any new opportunities, my inbox is always open.
+    Whether you have a question or just want to say hi, I’ll try my best to get back to you!`,
+    tagProps: {},
+  },
+  emailCta: {
+    text: 'Get In Touch',
+    tagProps: {
+      className: 'email-link',
+    },
+  },
+};
+
 const Contact = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -53,20 +78,20 @@ const Contact = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
+  const { title, subTitle, description, emailCta } = contactConfig;
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
-      <h2 className="numbered-heading overline">What’s Next?</h2>
+      <h2 {...title.tagProps}>{title.text}</h2>
 
-      <h2 className="title">Get In Touch</h2>
+      <h2 {...subTitle.tagProps}>{subTitle.text}</h2>
 
-      <p>
-        Although I’m not currently looking for any new opportunities, my inbox is always open.
-        Whether you have a question or just want to say hi, I’ll try my best to get back to you!
-      </p>
+      <p {...description.tagProps}>{description.text}</p>
 
-      <a className="email-link" href={`mailto:${email}`}>
-        Say Hello
-      </a>
+      {emailCta && (
+        <a {...emailCta.tagProps} href={`mailto:${email}`}>
+          {emailCta.text}
+        </a>
+      )}
     </StyledContactSection>
   );
 };

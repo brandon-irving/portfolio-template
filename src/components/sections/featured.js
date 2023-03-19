@@ -6,6 +6,7 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import { featured } from '../../config';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -303,6 +304,7 @@ const StyledProject = styled.li`
   }
 `;
 
+// CONFIG: featured
 const Featured = () => {
   const data = useStaticQuery(graphql`
     {
@@ -323,6 +325,7 @@ const Featured = () => {
               github
               external
               cta
+              miniTitle
             }
             html
           }
@@ -347,22 +350,22 @@ const Featured = () => {
 
   return (
     <section id="projects">
-      <h2 className="numbered-heading" ref={revealTitle}>
-        Some Things I’ve Built
+      <h2 {...featured.title.tagProps} ref={revealTitle}>
+        {featured.title.text}
       </h2>
 
       <StyledProjectsGrid>
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
+            const { external, title, tech, github, cover, cta, miniTitle } = frontmatter;
             const image = getImage(cover);
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
-                    <p className="project-overline">Featured Project</p>
+                    <p className="project-overline">{miniTitle || 'Featured Project'}</p>
 
                     <h3 className="project-title">
                       <a href={external}>{title}</a>

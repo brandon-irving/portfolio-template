@@ -1,5 +1,23 @@
 import { css } from 'styled-components';
-
+// const themeConfig = {
+//   main: '#64ffda', // the main font color, image overlay and accent
+//   pageBg: '#0a192f', // the bg color
+//   boxBg: '#112240', // box colors
+//   divider: '#233554', // divider lines
+//   scrollBar: '#495670', // scrollbar
+//   subtext: ['#8892b0', ' #a8b2d1', '#ccd6f6'], // subtext 1, 2, 3
+// };
+/* 
+TODO: theme where colors are  
+    --green: #64ffda; // the main font color, image overlay and accent
+        --navy: #0a192f; // the bg color
+            --light-navy: #112240; // box colors
+                --lightest-navy: #233554; // divider lines
+                    --dark-slate: #495670; // scrollbar
+                        --slate: #8892b0; // subtext 1
+                            --light-slate: #a8b2d1; // subtext 2
+    --lightest-slate: #ccd6f6; // subtext 3
+*/
 const variables = css`
   :root {
     --dark-navy: #020c1b;

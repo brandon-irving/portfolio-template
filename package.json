@@ -14,7 +14,10 @@
   "browserslist": "> 0.25%, not dead",
   "scripts": {
     "build": "gatsby build",
+    "ca": "node -e 'require(\"./src/scripts/create_ui.script\").createAtom()'",
+    "generateJobs": "node ./src/scripts",
     "develop": "gatsby develop",
+    "sdevelop": "npm run generateJobs && gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",

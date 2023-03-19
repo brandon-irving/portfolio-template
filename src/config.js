@@ -1,55 +1,28 @@
+const { default: hero } = require('./buildConfig/sections/hero');
+const { default: about } = require('./buildConfig/sections/about');
+const { default: jobs } = require('./buildConfig/sections/jobs');
+const { default: featured } = require('./buildConfig/sections/featured');
+const { default: email } = require('./buildConfig/core/email');
+const { default: socialMedia } = require('./buildConfig/core/socialMedia');
+const { default: navLinks } = require('./buildConfig/core/navLinks');
+
+const CONTENT_LOAD_DELAY = 50; // in ms
+
 module.exports = {
-  email: 'brittany.chiang@gmail.com',
-
-  socialMedia: [
-    {
-      name: 'GitHub',
-      url: 'https://github.com/bchiang7',
-    },
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/bchiang7',
-    },
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com/bchiang7',
-    },
-    {
-      name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/bchiang7',
-    },
-    {
-      name: 'Codepen',
-      url: 'https://codepen.io/bchiang7',
-    },
-  ],
-
-  navLinks: [
-    {
-      name: 'About',
-      url: '/#about',
-    },
-    {
-      name: 'Experience',
-      url: '/#jobs',
-    },
-    {
-      name: 'Work',
-      url: '/#projects',
-    },
-    {
-      name: 'Contact',
-      url: '/#contact',
-    },
-  ],
-
+  email,
+  socialMedia,
+  navLinks,
+  hero,
+  about,
+  jobs,
+  featured,
   colors: {
     green: '#64ffda',
     navy: '#0a192f',
     darkNavy: '#020c1b',
   },
 
-  srConfig: (delay = 200, viewFactor = 0.25) => ({
+  srConfig: (delay = CONTENT_LOAD_DELAY, viewFactor = 0.25) => ({
     origin: 'bottom',
     distance: '20px',
     duration: 500,
