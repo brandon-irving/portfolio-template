@@ -11,6 +11,7 @@ const featureConfigToMdString = ({
   tech,
   description,
   miniTitle,
+  cta,
 }) => `---
 date: '${date}'
 title: '${title}'
@@ -18,6 +19,7 @@ miniTitle: '${miniTitle}'
 cover: '../../../src/images/${cover}'
 github: '${github}'
 external: '${external}'
+cta: '${cta ? `${cta}` : ''}'
 tech: \n${tech.map(t => `- ${t}`).join('\n')}
 ---
 
