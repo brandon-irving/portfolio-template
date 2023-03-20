@@ -13,7 +13,6 @@ function createFolderAndFile(directory, filePath, data) {
   // Create the "Job" folder
   fs.mkdir(directory, err => {
     if (err && err.code !== 'EEXIST' && err.code !== 'ENOENT') {
-      console.log(`log: >>>>>>>`);
       throw err;
     }
     if (!fs.existsSync(directory)) {
