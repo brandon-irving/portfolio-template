@@ -1,23 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Layout, Hero, About, Jobs, Featured, Projects, Contact } from '@components';
+import * as Components from '@components';
+import { order } from '../buildConfig/core/layout';
 
 const StyledMainContainer = styled.main`
   counter-reset: section;
 `;
 
 const IndexPage = ({ location }) => (
-  <Layout location={location}>
+  <Components.Layout location={location}>
     <StyledMainContainer className="fillHeight">
-      <Hero />
-      <About />
-      <Jobs />
-      <Featured />
-      <Projects />
-      <Contact />
+      {order.map(key => {
+        const Component = Components[key];
+        return <Component key={key} />;
+      })}
     </StyledMainContainer>
-  </Layout>
+  </Components.Layout>
 );
 
 IndexPage.propTypes = {

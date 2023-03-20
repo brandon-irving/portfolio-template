@@ -16,7 +16,7 @@ const variables = css`
     --white: #e6f1ff;
     --pink: #f57dff;
     --blue: #57cbff;
-    --dark-navy: #020c1b;
+    --dark-navy: ${theme.loadingScreenBg};
 
     --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
       sans-serif;

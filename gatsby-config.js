@@ -1,13 +1,14 @@
+const siteInfo = require('./src/buildConfig/core/siteInfo');
 const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    title: 'Brittany Chiang',
-    description:
-      'Brittany Chiang is a software engineer who specializes in building (and occasionally designing) exceptional digital experiences.',
-    siteUrl: 'https://brittanychiang.com', // No trailing slash allowed!
-    image: '/og.png', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@bchiang7',
+    title: siteInfo.title,
+    description: siteInfo.description,
+    siteUrl: siteInfo.url, // No trailing slash allowed!
+    image: siteInfo.seoImage, // Path to your image you placed in the 'static' folder
+    // ^^
+    twitterUsername: '', // TODO
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
