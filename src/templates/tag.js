@@ -1,5 +1,8 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import {
+  Link,
+  //  graphql
+} from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
@@ -123,25 +126,25 @@ TagTemplate.propTypes = {
   location: PropTypes.object,
 };
 
-export const pageQuery = graphql`
-  query($tag: String!) {
-    allMarkdownRemark(
-      limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          frontmatter {
-            title
-            description
-            date
-            slug
-            tags
-          }
-        }
-      }
-    }
-  }
-`;
+// TODO: add back when templating pensieve section
+// export const pageQuery = graphql`
+//   query($tag: String!) {
+//     allMarkdownRemark(
+//       limit: 2000
+//       sort: { fields: [frontmatter___date], order: DESC }
+//       filter: { frontmatter: { tags: { in: [$tag] } } }
+//     ) {
+//       totalCount
+//       edges {
+//         node {
+//           frontmatter {
+//             title
+//             description
+//             date
+//             tags
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;

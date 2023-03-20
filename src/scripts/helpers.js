@@ -1,5 +1,6 @@
 const fs = require('fs');
 const readline = require('readline');
+const path = require('path');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -8,49 +9,43 @@ const rl = readline.createInterface({
 
 // Function to create the "Job" folder and "index.md" file
 function createFolderAndFile(directory, filePath, data) {
+  // Remove old stuff first
   // Create the "Job" folder
   fs.mkdir(directory, err => {
-    if (err && err.code !== 'EEXIST') {throw err;}
-
+    if (err && err.code !== 'EEXIST' && err.code !== 'ENOENT') {
+      console.log(`log: >>>>>>>`);
+      throw err;
+    }
+    if (!fs.existsSync(directory)) {
+      console.log(`No directory "${directory}" found, creating directory`);
+      fs.mkdirSync(directory, { recursive: true });
+      console.log(`successfully created "${directory}" directory`);
+    }
     console.log(`${directory} created`);
-
-    // Check if the "index.md" file already exists
-    fs.access(`${filePath}`, fs.constants.F_OK, err => {
-      if (!err) {
-        // If it exists, prompt the user to confirm overwriting the file
-        rl.question(
-          'The "index.md" file already exists. Do you want to overwrite it? (y/n) ',
-          answer => {
-            if (answer === 'y') {
-              createFile(filePath, data);
-            } else {
-              console.log('Aborting.');
-              rl.close();
-            }
-          },
-        );
-      } else {
-        createFile(filePath, data);
-      }
-    });
+    createFile(filePath, data);
   });
 }
 
 // Function to create the "index.md" file and write to it
+
 function createFile(filePath, data) {
-  // Create the "index.md" file and write to it
-  fs.writeFile(`${filePath}`, data, err => {
-    if (err) {throw err;}
+  const directory = path.dirname(filePath);
 
-    console.log(`${filePath} was created`);
+  if (!fs.existsSync(directory)) {
+    console.log(`No directory "${directory}" found, creating directory`);
+    fs.mkdirSync(directory, { recursive: true });
+    console.log(`successfully created "${directory}" directory`);
+  }
 
-    // Read the content of the file to verify it was written successfully
-    fs.readFile(`${filePath}`, 'utf8', (err, readData) => {
-      if (err) {throw err;}
-
-      console.log('Content:', readData);
-      rl.close();
-    });
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, data);
+    console.log(`successfully created "${filePath}"`);
+  }
+  fs.readFile(`${filePath}`, 'utf8', err => {
+    if (err) {
+      throw err;
+    }
+    rl.close();
   });
 }
 

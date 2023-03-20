@@ -1,5 +1,8 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import {
+  // graphql,
+  Link,
+} from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
@@ -208,28 +211,28 @@ PensievePage.propTypes = {
 
 export default PensievePage;
 
-export const pageQuery = graphql`
-  {
-    allMarkdownRemark(
-      filter: {
-        fileAbsolutePath: { regex: "/content/posts/" }
-        frontmatter: { draft: { ne: true } }
-      }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            description
-            slug
-            date
-            tags
-            draft
-          }
-          html
-        }
-      }
-    }
-  }
-`;
+// export const pageQuery = graphql`
+//   {
+//     allMarkdownRemark(
+//       filter: {
+//         fileAbsolutePath: { regex: "/content/posts/" }
+//         frontmatter: { draft: { ne: true } }
+//       }
+//       sort: { fields: [frontmatter___date], order: DESC }
+//     ) {
+//       edges {
+//         node {
+//           frontmatter {
+//             title
+//             description
+//             slug
+//             date
+//             tags
+//             draft
+//           }
+//           html
+//         }
+//       }
+//     }
+//   }
+// `;
