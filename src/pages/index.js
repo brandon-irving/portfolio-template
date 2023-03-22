@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import * as Components from '@components';
 import { order } from '../buildConfig/core/layout';
+import Fab from '../components/Fab';
+import { showFloatingActionButton } from '../buildConfig/core/siteInfo';
 
 const StyledMainContainer = styled.main`
   counter-reset: section;
@@ -15,6 +17,7 @@ const IndexPage = ({ location }) => (
         const Component = Components[key];
         return <Component key={key} />;
       })}
+      {showFloatingActionButton && <Fab />}
     </StyledMainContainer>
   </Components.Layout>
 );

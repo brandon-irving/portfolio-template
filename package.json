@@ -2,19 +2,22 @@
   "name": "v4",
   "description": "Personal Website V4",
   "version": "1.0.0",
-  "author": "Brittany Chiang <brittany.chiang@gmail.com>",
+  "author": "Brandon Irving <birvingfau@@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bchiang7/v4"
+    "url": "https://github.com/brandon-irving/portfolio-template"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "gatsby js",
+    "portfolio",
+    "portfolio template",
+    "React js"
   ],
   "license": "MIT",
   "browserslist": "> 0.25%, not dead",
   "scripts": {
     "build": "gatsby build",
-    "ca": "node -e 'require(\"./src/scripts/create_ui.script\").createAtom()'",
     "generate": "node ./src/scripts",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
