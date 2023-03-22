@@ -5,7 +5,7 @@ module.exports = {
       date: '2017-12-21',
       title: 'Mega Coders Stuff!',
       miniTitle: 'Some stuff about Mega man!!',
-      cover: 'halcyon.png',
+      cover: 'headshot.jpeg',
       cta: 'https://www.newline.co/courses/build-a-spotify-connected-app',
       github: 'https://github.com/bchiang7/halcyon-site',
       external: 'https://halcyon-theme.netlify.com/',

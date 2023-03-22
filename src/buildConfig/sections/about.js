@@ -1,4 +1,5 @@
 module.exports = {
+  image: '../../images/me.jpg',
   title: {
     text: 'About me',
     tagProps: {

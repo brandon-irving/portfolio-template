@@ -1,9 +1,9 @@
 module.exports = {
-  title: 'Brandon Irving',
-  personalName: 'Brandon Irving',
-  description: 'This is a template version of brittany site',
+  title: 'Taneshia Pierre',
+  personalName: 'Taneshia Pierre',
+  description: '',
   url: 'http://localhost:8000',
   seoImage: 'static/og.png', // TODO: check to see if this works
-  footer: 'This is a footer',
-  showFloatingActionButton: true,
+  footer: '© Taneshia Pierre 2023',
+  showFloatingActionButton: false,
 };
