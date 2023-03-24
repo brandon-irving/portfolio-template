@@ -1,5 +1,5 @@
 module.exports = {
-  image: '../../images/me.jpg',
+  image: '../../images/headshot.jpeg',
   title: {
     text: 'About me',
     tagProps: {
@@ -11,9 +11,10 @@ module.exports = {
     tagProps: {},
   },
   skills: {
-    title: 'Here are a few technologies I’ve been working with recently:',
+    title: 'Can my experience help you reach your goals?',
     list: [
       'Social Media Marketing',
+      'Social Media Strategy',
       'Content & Design',
       'Customer Relations',
       'Audience Engagement',

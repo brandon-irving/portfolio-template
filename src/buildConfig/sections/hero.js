@@ -20,7 +20,7 @@ module.exports = {
     tagProps: {},
   },
   CTA: {
-    text: ' View My Work!',
+    text: ' View My Portfolio',
     link: 'https://www.newline.co/courses/build-a-spotify-connected-app',
   },
 };
