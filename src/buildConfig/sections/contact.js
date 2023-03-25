@@ -10,8 +10,7 @@ module.exports = {
     tagProps: { className: 'title' },
   },
   description: {
-    text: ` Although I’m not currently looking for any new opportunities, my inbox is always open.
-    Whether you have a question or just want to say hi, I’ll try my best to get back to you!`,
+    text: `My inbox is OPEN! I’m currently looking for a new role and welcome all digital focused opportunities. Please don’t hesitate to reach out if you think we would be a great fit for each other.`,
     tagProps: {},
   },
   emailCta: {

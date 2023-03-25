@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  max-width: 1000px;
+  width: 1000px;
 `;
 
 const GridItem = styled.div`

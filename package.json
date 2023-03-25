@@ -19,6 +19,7 @@
   "scripts": {
     "build": "gatsby build",
     "generate": "node ./src/scripts",
+    "go": "node ./src/scripts/tedious",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",

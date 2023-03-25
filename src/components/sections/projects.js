@@ -202,7 +202,7 @@ const Projects = () => {
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
 
-  const { title, viewArchive } = projectsConfig;
+  const { title, viewArchive, subtitle } = projectsConfig;
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -222,6 +222,7 @@ const Projects = () => {
   return (
     <StyledProjectsSection>
       <h2 ref={revealTitle}>{title.text}</h2>
+      <h3 ref={revealTitle}>{subtitle.text}</h3>
 
       {!!viewArchive && (
         <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
@@ -259,7 +260,9 @@ const Projects = () => {
                         transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
                       }}>
                       <GridContainer>
-                        <ImageComponent key={i} alt={node.frontmatter.title} src={image} />
+                        <a href={node.frontmatter.link} target={'_blank'} rel="noreferrer">
+                          <ImageComponent key={i} alt={node.frontmatter.title} src={image} />
+                        </a>
                       </GridContainer>
                       {/* {projectInner(node)} */}
                     </StyledProject>
