@@ -12,16 +12,20 @@ const projectsConfigToMdString = ({
   ios,
   android,
   company,
+  image,
+  link,
 }) => `---
 date: '${date}'
 title: '${title}'
 github: '${github}'
 external: '${external}'
+link: '${link}'
 ios: ${ios ? `'${ios}'` : '\'\''}
 android: ${android ? `'${android}'` : '\'\''}
 company: '${company}'
 showInProjects: true
-tech: \n${tech.map(t => `- ${t}`).join('\n')}
+tech: \n${tech && tech.map(t => `- ${t}`).join('\n')}
+image: '../../src/images/projects/${image}'
 ---
 
 ${description}

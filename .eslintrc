@@ -2,6 +2,8 @@
   "root": true,
   "extends": "@upstatement/eslint-config/react",
   "rules": {
-    "no-console": "off"
+    "no-console": "off",
+    "no-use-before-define": "off",
+    "react/prop-types": "off"
   }
 }

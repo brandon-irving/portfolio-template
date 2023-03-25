@@ -359,6 +359,9 @@ const Featured = () => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover, cta, miniTitle } = frontmatter;
             const image = getImage(cover);
+            if (!i) {
+              console.log('log: featuredProjects', { cover, image });
+            }
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>

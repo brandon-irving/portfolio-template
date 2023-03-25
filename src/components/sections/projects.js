@@ -6,6 +6,9 @@ import { srConfig, projects as projectsConfig } from '@config';
 import sr from '@utils/sr';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import { GridContainer } from '../atoms/GridContainer';
+import { ImageComponent } from '../atoms/ImageO';
+import { getImage } from 'gatsby-plugin-image';
 
 const StyledProjectsSection = styled.section`
   display: flex;
@@ -179,9 +182,12 @@ const Projects = () => {
           node {
             frontmatter {
               title
-              tech
-              github
-              external
+              link
+              image {
+                childImageSharp {
+                  gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                }
+              }
             }
             html
           }
@@ -213,58 +219,6 @@ const Projects = () => {
   const firstSix = projects.slice(0, GRID_LIMIT);
   const projectsToShow = showMore ? projects : firstSix;
 
-  const projectInner = node => {
-    const { frontmatter, html } = node;
-    const { github, external, title, tech } = frontmatter;
-
-    return (
-      <div className="project-inner">
-        <header>
-          <div className="project-top">
-            <div className="folder">
-              <Icon name="Folder" />
-            </div>
-            <div className="project-links">
-              {github && (
-                <a href={github} aria-label="GitHub Link" target="_blank" rel="noreferrer">
-                  <Icon name="GitHub" />
-                </a>
-              )}
-              {external && (
-                <a
-                  href={external}
-                  aria-label="External Link"
-                  className="external"
-                  target="_blank"
-                  rel="noreferrer">
-                  <Icon name="External" />
-                </a>
-              )}
-            </div>
-          </div>
-
-          <h3 className="project-title">
-            <a href={external} target="_blank" rel="noreferrer">
-              {title}
-            </a>
-          </h3>
-
-          <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
-        </header>
-
-        <footer>
-          {tech && (
-            <ul className="project-tech-list">
-              {tech.map((tech, i) => (
-                <li key={i}>{tech}</li>
-              ))}
-            </ul>
-          )}
-        </footer>
-      </div>
-    );
-  };
-
   return (
     <StyledProjectsSection>
       <h2 ref={revealTitle}>{title.text}</h2>
@@ -286,22 +240,32 @@ const Projects = () => {
         ) : (
           <TransitionGroup component={null}>
             {projectsToShow &&
-              projectsToShow.map(({ node }, i) => (
-                <CSSTransition
-                  key={i}
-                  classNames="fadeup"
-                  timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
-                  exit={false}>
-                  <StyledProject
+              projectsToShow.map(({ node }, i) => {
+                const image = getImage(node.frontmatter.image);
+                if (!i) {
+                  console.log('log:', { image, data: node.frontmatter.image });
+                }
+
+                return (
+                  <CSSTransition
                     key={i}
-                    ref={el => (revealProjects.current[i] = el)}
-                    style={{
-                      transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
-                    }}>
-                    {projectInner(node)}
-                  </StyledProject>
-                </CSSTransition>
-              ))}
+                    classNames="fadeup"
+                    timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
+                    exit={false}>
+                    <StyledProject
+                      key={i}
+                      ref={el => (revealProjects.current[i] = el)}
+                      style={{
+                        transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
+                      }}>
+                      <GridContainer>
+                        <ImageComponent key={i} alt={node.frontmatter.title} src={image} />
+                      </GridContainer>
+                      {/* {projectInner(node)} */}
+                    </StyledProject>
+                  </CSSTransition>
+                );
+              })}
           </TransitionGroup>
         )}
       </ul>
@@ -312,6 +276,56 @@ const Projects = () => {
         </button>
       )}
     </StyledProjectsSection>
+  );
+};
+const projectInner = node => {
+  const { frontmatter, html } = node;
+  const { github, external, title, tech } = frontmatter;
+  return (
+    <div className="project-inner">
+      <header>
+        <div className="project-top">
+          <div className="folder">
+            <Icon name="Folder" />
+          </div>
+          <div className="project-links">
+            {github && (
+              <a href={github} aria-label="GitHub Link" target="_blank" rel="noreferrer">
+                <Icon name="GitHub" />
+              </a>
+            )}
+            {external && (
+              <a
+                href={external}
+                aria-label="External Link"
+                className="external"
+                target="_blank"
+                rel="noreferrer">
+                <Icon name="External" />
+              </a>
+            )}
+          </div>
+        </div>
+
+        <h3 className="project-title">
+          <a href={external} target="_blank" rel="noreferrer">
+            {title}
+          </a>
+        </h3>
+
+        <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
+      </header>
+
+      <footer>
+        {tech && (
+          <ul className="project-tech-list">
+            {tech.map((tech, i) => (
+              <li key={i}>{tech}</li>
+            ))}
+          </ul>
+        )}
+      </footer>
+    </div>
   );
 };
 
