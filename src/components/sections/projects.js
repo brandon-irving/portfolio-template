@@ -4,11 +4,19 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { srConfig, projects as projectsConfig } from '@config';
 import sr from '@utils/sr';
-import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 import { GridContainer } from '../atoms/GridContainer';
 import { ImageComponent } from '../atoms/ImageO';
 import { getImage } from 'gatsby-plugin-image';
+
+function sortGatsbyObjsByProjectOrder(gatsbyObjs, projectDict) {
+  const list = Object.keys(projectDict).reduce((prev, curr) => [...prev, projectDict[curr].title], []);
+  return gatsbyObjs.sort((a, b) => {
+    const aIndex = list.indexOf(a.node.frontmatter.title);
+    const bIndex = list.indexOf(b.node.frontmatter.title);
+    return aIndex - bIndex;
+  });
+}
 
 const StyledProjectsSection = styled.section`
   display: flex;
@@ -202,8 +210,7 @@ const Projects = () => {
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
 
-  const { title, viewArchive, subtitle } = projectsConfig;
-
+  const { title, viewArchive, subtitle, dictionary } = projectsConfig;
   useEffect(() => {
     if (prefersReducedMotion) {
       return;
@@ -215,12 +222,13 @@ const Projects = () => {
   }, []);
 
   const GRID_LIMIT = 6;
-  const projects = data.projects.edges.filter(({ node }) => node);
+  const projectsBase = data.projects.edges.filter(({ node }) => node);
+  const projects = sortGatsbyObjsByProjectOrder(projectsBase, dictionary);
   const firstSix = projects.slice(0, GRID_LIMIT);
   const projectsToShow = showMore ? projects : firstSix;
 
   return (
-    <StyledProjectsSection>
+    <StyledProjectsSection id="projects">
       <h2 ref={revealTitle}>{title.text}</h2>
       <h3 ref={revealTitle}>{subtitle.text}</h3>
 
@@ -234,19 +242,13 @@ const Projects = () => {
         {prefersReducedMotion ? (
           <>
             {projectsToShow &&
-              projectsToShow.map(({ node }, i) => (
-                <StyledProject key={i}>{projectInner(node)}</StyledProject>
-              ))}
+              projectsToShow.map((_, i) => <StyledProject key={i}></StyledProject>)}
           </>
         ) : (
           <TransitionGroup component={null}>
             {projectsToShow &&
               projectsToShow.map(({ node }, i) => {
                 const image = getImage(node.frontmatter.image);
-                if (!i) {
-                  console.log('log:', { image, data: node.frontmatter.image });
-                }
-
                 return (
                   <CSSTransition
                     key={i}
@@ -264,7 +266,6 @@ const Projects = () => {
                           <ImageComponent key={i} alt={node.frontmatter.title} src={image} />
                         </a>
                       </GridContainer>
-                      {/* {projectInner(node)} */}
                     </StyledProject>
                   </CSSTransition>
                 );
@@ -281,55 +282,4 @@ const Projects = () => {
     </StyledProjectsSection>
   );
 };
-const projectInner = node => {
-  const { frontmatter, html } = node;
-  const { github, external, title, tech } = frontmatter;
-  return (
-    <div className="project-inner">
-      <header>
-        <div className="project-top">
-          <div className="folder">
-            <Icon name="Folder" />
-          </div>
-          <div className="project-links">
-            {github && (
-              <a href={github} aria-label="GitHub Link" target="_blank" rel="noreferrer">
-                <Icon name="GitHub" />
-              </a>
-            )}
-            {external && (
-              <a
-                href={external}
-                aria-label="External Link"
-                className="external"
-                target="_blank"
-                rel="noreferrer">
-                <Icon name="External" />
-              </a>
-            )}
-          </div>
-        </div>
-
-        <h3 className="project-title">
-          <a href={external} target="_blank" rel="noreferrer">
-            {title}
-          </a>
-        </h3>
-
-        <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
-      </header>
-
-      <footer>
-        {tech && (
-          <ul className="project-tech-list">
-            {tech.map((tech, i) => (
-              <li key={i}>{tech}</li>
-            ))}
-          </ul>
-        )}
-      </footer>
-    </div>
-  );
-};
-
 export default Projects;

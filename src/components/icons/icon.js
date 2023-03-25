@@ -16,6 +16,7 @@ import {
   IconStar,
   IconTwitter,
   UpArrow,
+  Tiktok,
 } from '@components/icons';
 
 const Icon = ({ name }) => {
@@ -52,6 +53,8 @@ const Icon = ({ name }) => {
       return <IconTwitter />;
     case 'UpArrow':
       return <UpArrow />;
+    case 'Tiktok':
+      return <Tiktok />;
     default:
       return <IconExternal />;
   }

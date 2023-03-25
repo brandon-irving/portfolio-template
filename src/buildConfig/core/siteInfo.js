@@ -4,7 +4,7 @@ module.exports = {
   description: '',
   url: 'http://localhost:8000',
   seoImage: 'static/og.png', // TODO: check to see if this works
-  footer: '© Taneshia Pierre 2023',
+  footer: '© 2023 Taneshia Pierre',
   showFloatingActionButton: false,
   scrollToRoute: false,
 };

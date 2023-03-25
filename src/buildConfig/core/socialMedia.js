@@ -2,6 +2,10 @@
 
 module.exports = [
   {
+    name: 'Tiktok',
+    url: 'https://www.tiktok.com/@neshiaimani',
+  },
+  {
     name: 'Instagram',
     url: 'https://www.instagram.com/neshiaimani/',
   },

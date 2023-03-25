@@ -71,7 +71,7 @@ const Hero = () => {
     </>
   );
   const five = (
-    <a className="email-link" href={CTA.link} target="_blank" rel="noreferrer">
+    <a className="email-link" href={CTA.link} rel="noreferrer">
       {CTA.text}
     </a>
   );
