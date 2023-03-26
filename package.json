@@ -17,7 +17,7 @@
   "license": "MIT",
   "browserslist": "> 0.25%, not dead",
   "scripts": {
-    "build": "npm run generate && gatsby build",
+    "build": "gatsby build",
     "generate": "node ./src/scripts",
     "go": "node ./src/scripts/tedious",
     "develop": "gatsby develop",
