@@ -4,8 +4,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { srConfig, projects as projectsConfig } from '@config';
 import sr from '@utils/sr';
-import { usePrefersReducedMotion } from '@hooks';
-import { GridContainer } from '../atoms/GridContainer';
+import { useIsMobile, usePrefersReducedMotion } from '@hooks';
 import { ImageComponent } from '../atoms/ImageO';
 import { getImage } from 'gatsby-plugin-image';
 
@@ -77,16 +76,11 @@ const StyledProject = styled.li`
   }
 
   .project-inner {
-    ${({ theme }) => theme.mixins.boxShadow};
     ${({ theme }) => theme.mixins.flexBetween};
     flex-direction: column;
     align-items: flex-start;
     position: relative;
     height: 100%;
-    padding: 2rem 1.75rem;
-    border-radius: var(--border-radius);
-    background-color: var(--light-navy);
-    transition: var(--transition);
     overflow: auto;
   }
 
@@ -206,7 +200,7 @@ const Projects = () => {
       }
     }
   `);
-
+  const isMobile = useIsMobile();
   const [showMore, setShowMore] = useState(false);
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);
@@ -214,6 +208,7 @@ const Projects = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const { title, viewArchive, subtitle, dictionary } = projectsConfig;
+
   useEffect(() => {
     if (prefersReducedMotion) {
       return;
@@ -224,7 +219,7 @@ const Projects = () => {
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
 
-  const GRID_LIMIT = 6;
+  const GRID_LIMIT = isMobile ? 3 : 6;
   const projectsBase = data.projects.edges.filter(({ node }) => node);
   const projects = sortGatsbyObjsByProjectOrder(projectsBase, dictionary);
   const firstSix = projects.slice(0, GRID_LIMIT);
@@ -233,7 +228,9 @@ const Projects = () => {
   return (
     <StyledProjectsSection id="projects">
       <h2 ref={revealTitle}>{title.text}</h2>
-      <h3 ref={revealTitle}>{subtitle.text}</h3>
+      <h3 style={{ textAlign: 'center' }} ref={revealTitle}>
+        {subtitle.text}
+      </h3>
 
       {!!viewArchive && (
         <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
@@ -264,11 +261,11 @@ const Projects = () => {
                       style={{
                         transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
                       }}>
-                      <GridContainer>
+                      <div className="project-inner">
                         <a href={node.frontmatter.link} target={'_blank'} rel="noreferrer">
                           <ImageComponent key={i} alt={node.frontmatter.title} src={image} />
                         </a>
-                      </GridContainer>
+                      </div>
                     </StyledProject>
                   </CSSTransition>
                 );
@@ -277,7 +274,7 @@ const Projects = () => {
         )}
       </ul>
 
-      {projects.length > 6 && (
+      {projects.length > GRID_LIMIT && (
         <button className="more-button" onClick={() => setShowMore(!showMore)}>
           Show {showMore ? 'Less' : 'More'}
         </button>

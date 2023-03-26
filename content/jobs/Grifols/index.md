@@ -1,7 +1,7 @@
 ---
 date: '2021-11-01'
 title: 'Digital Communication Specialist'
-company: 'Grifols/Biomat USA'
+company: 'Grifols'
 location: 'Remote'
 range: 'November 2021 – Feburary 2023'
 url: 'https://www.grifolsplasma.com/'

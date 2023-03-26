@@ -1,7 +1,7 @@
 ---
 date: '2015-05-14'
 title: 'Social Media Manager'
-company: 'FAU Recreation & Fitness Center'
+company: 'FAU Rec Center'
 location: 'Boca Raton, FL'
 range: 'May 2015 – May 2016'
 url: 'https://www.fau.edu/campusrec/'

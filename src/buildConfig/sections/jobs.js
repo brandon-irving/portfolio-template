@@ -9,7 +9,7 @@ module.exports = {
     Grifols: {
       date: '2021-11-01',
       title: 'Digital Communication Specialist',
-      company: 'Grifols/Biomat USA',
+      company: 'Grifols',
       location: 'Remote',
       range: 'November 2021 – Feburary 2023',
       url: 'https://www.grifolsplasma.com/',
@@ -38,7 +38,7 @@ module.exports = {
     Bestlittlebaby: {
       date: '2018-05-14',
       title: 'Social Media Manager',
-      company: 'Bestlittlebaby.com',
+      company: 'Bestlittlebaby',
       location: 'Remote',
       range: 'May 2016 – November 2021',
       url: 'https://www.bestlittlebaby.com',
@@ -52,7 +52,7 @@ module.exports = {
     FAU: {
       date: '2015-05-14',
       title: 'Social Media Manager',
-      company: 'FAU Recreation & Fitness Center',
+      company: 'FAU Rec Center',
       location: 'Boca Raton, FL',
       range: 'May 2015 – May 2016',
       url: 'https://www.fau.edu/campusrec/',

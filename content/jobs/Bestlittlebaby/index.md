@@ -1,7 +1,7 @@
 ---
 date: '2018-05-14'
 title: 'Social Media Manager'
-company: 'Bestlittlebaby.com'
+company: 'Bestlittlebaby'
 location: 'Remote'
 range: 'May 2016 – November 2021'
 url: 'https://www.bestlittlebaby.com'
