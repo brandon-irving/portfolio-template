@@ -347,7 +347,6 @@ const Featured = () => {
     sr.reveal(revealTitle.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
-
   return (
     <section id="projects">
       <h2 {...featured.title.tagProps} ref={revealTitle}>
@@ -360,6 +359,9 @@ const Featured = () => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover, cta, miniTitle } = frontmatter;
             const image = getImage(cover);
+            if (!i) {
+              console.log('log: featuredProjects', { cover, image });
+            }
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -406,7 +408,12 @@ const Featured = () => {
 
                 <div className="project-image">
                   <a href={external ? external : github ? github : '#'}>
-                    <GatsbyImage image={image} alt={title} className="img" />
+                    <GatsbyImage
+                      style={{ width: 580, height: 365, objectFit: 'contain' }}
+                      image={image}
+                      alt={title}
+                      className="img"
+                    />
                   </a>
                 </div>
               </StyledProject>

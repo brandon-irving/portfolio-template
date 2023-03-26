@@ -4,6 +4,8 @@ import { srConfig, email } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
+import contact from '../../buildConfig/sections/contact';
+
 const StyledContactSection = styled.section`
   max-width: 600px;
   margin: 0 auto 100px;
@@ -41,31 +43,6 @@ const StyledContactSection = styled.section`
   }
 `;
 
-// CONFIG:
-const contactConfig = {
-  title: {
-    text: 'What’s Next?',
-    tagProps: {
-      className: 'numbered-heading overline',
-    },
-  },
-  subTitle: {
-    text: 'Get In Touch',
-    tagProps: { className: 'title' },
-  },
-  description: {
-    text: ` Although I’m not currently looking for any new opportunities, my inbox is always open.
-    Whether you have a question or just want to say hi, I’ll try my best to get back to you!`,
-    tagProps: {},
-  },
-  emailCta: {
-    text: 'Get In Touch',
-    tagProps: {
-      className: 'email-link',
-    },
-  },
-};
-
 const Contact = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -78,7 +55,7 @@ const Contact = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const { title, subTitle, description, emailCta } = contactConfig;
+  const { title, subTitle, description, emailCta } = contact;
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
       <h2 {...title.tagProps}>{title.text}</h2>

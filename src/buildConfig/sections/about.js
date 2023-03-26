@@ -1,4 +1,5 @@
 module.exports = {
+  image: '../../images/headshot.jpeg',
   title: {
     text: 'About me',
     tagProps: {
@@ -6,12 +7,26 @@ module.exports = {
     },
   },
   description: {
-    text: `Hello! My name is Brittany and I enjoy creating things that live on the internet. My interest in web development started back in 2012 when I decided to try editing custom Tumblr themes — turns out hacking together a custom reblog button taught me a lot about HTML & CSS!`,
+    text: `Hello! My name is Taneshia and I enjoy creating organic content that live on digital platforms. My interest in social media started in 2008 when I decided to fill a role as a Social Media Manager at Florida Atlantic University Recreation & Fitness Center. I was amazed when I found out I can build a career out of something I truly enjoy doing every day. `,
     tagProps: {},
   },
   skills: {
-    title: 'Here are a few technologies I’ve been working with recently:',
-    list: ['JavaScript (ES6+)', 'TypeScript', 'React', 'Eleventy', 'Node.js', 'WordPress'],
+    title: 'Can my experience help you reach your goals?',
+    list: [
+      'Social Media Marketing',
+      'Social Media Strategy',
+      'Content & Design',
+      'Customer Relations',
+      'Audience Engagement',
+      'Digital Marketing',
+      'Market Research',
+      'Digital Campaigns',
+      'Branding Communications',
+      'Creative Direction',
+      'Revenue Generation',
+      'CRM Techniques',
+      'Leadership & Training',
+    ],
     tagProps: { className: 'skills-list' },
   },
 };

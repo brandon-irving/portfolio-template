@@ -4,6 +4,8 @@ import styled, { ThemeProvider } from 'styled-components';
 import { Head, Loader, Nav, Social, Email, Footer } from '@components';
 import { GlobalStyle, theme } from '@styles';
 
+import siteInfo from '../buildConfig/core/siteInfo';
+
 const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -33,6 +35,9 @@ const Layout = ({ children, location }) => {
     }
 
     if (location.hash) {
+      if (!siteInfo.scrollToRoute) {
+        return;
+      }
       const id = location.hash.substring(1); // location.hash without the '#'
       setTimeout(() => {
         const el = document.getElementById(id);
