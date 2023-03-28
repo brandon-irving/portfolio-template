@@ -8,7 +8,7 @@ module.exports = {
   dictionary: {
     Grifols: {
       date: '2021-11-01',
-      title: 'Digital Communication Specialist',
+      title: 'Digital Content Specialist',
       company: 'Grifols',
       location: 'Remote',
       range: 'November 2021 – Feburary 2023',
